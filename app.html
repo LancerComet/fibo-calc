@@ -1,0 +1,99 @@
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="LancerComet">
+    <title>斐波那契计算器</title>
+    <link rel="stylesheet" href="/dist/stylesheets/fibo-app.min.css">
+</head>
+
+<body>
+
+    <!-- Left Navbar. -->
+    <nav class="left-nav dp-none" ms-controller="leftNavCtrl">
+        <div class="author"></div>
+        <button class="section-switcher retrancement" title="斐波那契回撤" ms-click="switchPanel('fibo-retrancement')"></button>
+        <button class="section-switcher expansion" title="斐波那契扩展" ms-click="switchPanel('fibo-expansion')"></button>
+    </nav>
+
+    <!-- Main Node. -->
+    <main class="main-ctnr" ms-controller="mainSectionCtrl">
+
+        <!-- Fibo Retrancement Panel. | 斐波那契回调面板. -->
+        <section class="main-section retrancement" ms-visible="showPanel === 'fibo-retrancement'">
+
+            <div class="retrancement-ctnr" ms-controller="retrancementCtrl">
+                
+                <h2>斐波那契回调</h2>
+                
+                <!-- Action bar. -->
+                <nav class="action-bar">
+                    <button class="panel-switcher" ms-click="switchPanel('uptrend')" ms-class="active: panelNow === 'uptrend'">上升趋势</button>
+                    <button class="panel-switcher" ms-click="switchPanel('downtrend')" ms-class="active: panelNow === 'downtrend'">下降趋势</button>
+                </nav>
+
+                <!-- Panel:  -->
+                <div class="panel-ctnr">
+                    
+                    <h4 ms-text="panelNow === 'uptrend' ? '上升趋势' : '下降趋势'"></h4>
+
+                    <!-- Chart Image. -->
+                    <div class="chart-ctnr retrancement" ms-class="uptrend: panelNow === 'uptrend'" ms-class-1="downtrend: panelNow === 'downtrend'">
+                        <div class="chart-image transition-dot-4">
+                            <p class="n-x" ms-text="'x: ' + inputData.x"></p>
+                            <p class="n-a" ms-text="'a: ' + inputData.a"></p>
+                            <p class="n-382" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.382)).toFixed(5)"></p>
+                            <p class="n-500" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.5)).toFixed(5)"></p>
+                            <p class="n-618" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.618)).toFixed(5)"></p>
+                            <p class="n-786" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.786)).toFixed(5)"></p>
+                            <p class="n-886" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.886)).toFixed(5)"></p>
+                            <!--<p class="n-1130" ms-text="(parseFloat(inputData.a) - ((parseFloat(inputData.a) - parseFloat(inputData.x)) * 1.13)).toFixed(5)"></p>-->
+                        </div>
+                        <div class="input-area">
+                            <p><label>X 点价格：</label><input class="x-input transition-dot-4" type="text" ms-duplex="inputData.x"></p>
+                            <p><label>A 点价格：</label><input class="a-input transition-dot-4" type="text" ms-duplex="inputData.a"></p>
+                        </div>
+                    </div>
+
+                </div>
+
+                
+            </div>
+
+        </section>
+
+        <!-- Fibo Expansion Panel. | 斐波那契扩展面板. -->
+        <section class="main-section expansion" ms-visible="showPanel === 'fibo-expansion'">
+
+            <!-- Action bar. -->
+            <nav class="action-bar"></nav>
+            
+            <h2>斐波那契扩展</h2>
+
+            <!-- Panel:  -->
+            <div class="panel-ctnr expansion-uptrend"></div>
+
+            <!-- Panel: Downtrend. -->
+            <div class="panel-ctnr expansion-downtrend"></div>
+
+        </section>
+
+        <!-- Welcome Panel. -->
+        <section class="main-section welcome" ms-visible="showPanel === 'fibo-welcome'">
+            <h2>Welcome!</h2>
+            <p>Please select a panel.</p>
+        </section>
+
+    </main>
+
+    <!-- Scripts Requirement. -->
+    <div class="scripts-requirement">
+        <script src="http://cdn.bootcss.com/avalon.js/1.5.5/avalon.min.js"></script>
+        <script src="/dist/scripts/fibo-app.min.js"></script>
+    </div>
+
+
+</body>
+
+
+</html>
