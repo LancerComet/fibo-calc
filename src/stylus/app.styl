@@ -18,10 +18,30 @@ body
   font-size 1em
   font-family "微软雅黑", "Microsoft SansSerif"
   
-  
-  
 button
   outline none  
+  
+.move-in-left
+  -webkit-animation move-in-left $cubicEase .4s
+  animation move-in-left $cubicEase .4s
+  
+@-webkit-keyframes move-in-left
+  from
+    -webkit-transform translate(5em, 0)
+    transform translate(5em, 0)
+    opacity 0
+  to
+    -webkit-transform translate(0, 0)
+    transform translate(0, 0)
+    opacity 1                
+  
+@keyframes move-in-left
+  from
+    transform translate(5em, 0)
+    opacity 0
+  to
+    transform translate(0, 0)
+    opacity 1          
  
  
  
@@ -66,10 +86,10 @@ button
     background-color #eaf8ff
     color #64a2c5
     cursor pointer
-    &:hover
+    &hover
       background-color #e2fbff
       color #58d4ff
-    &:active
+    &active
       background-color #d6edff
       color #64a2c5  
     &.active
@@ -175,12 +195,117 @@ button
         top 1.95em
         
       
-            
+  &.extension
+    .chart-image
+      width 600px
+      height 634px
+      background-image url("/dist/images/fibo-image-extension.jpg")
+      
+    &.uptrend
+    
+      .n-x
+        left 0
+        top 37.9em 
+      
+      .n-a
+        left 17.5em
+        top 13.6em
+      
+      .n-382
+        top 28.1em
+        left 19.1em
+        color #A1C139
+          
+      .n-500
+        top 25.3em
+        left 19.1em
+        color #74C23B
+          
+      .n-618
+        left 19.1em
+        top 22.6em
+        color #79C598        
+      
+      .n-786
+        left 19.1em
+        top 18.6em
+        color #659CCC
         
-    &.expansion
-      background-image url("/dist/images/fibo-image-expansion.jpg")
-      &.downtrend
-        background-position 0 -577px
+      .n-886
+        left 19.1em
+        top 16.3em
+        color #d77cb9          
+      
+      .n-1272  
+        left 19.1em
+        top 7.35em
+        color #c72838
+        
+      .n-1414  
+        left 19.1em
+        top 4em  
+        color #9528cc
+        
+      .n-1618  
+        left 19.1em
+        top -0.7em
+        color #2828cc    
+                 
+      
+    &.downtrend
+      
+      .chart-image           
+        background-position -600px 0
+          
+      .n-x
+        top -1.7em
+        left 0
+      
+      .n-a
+        left 17.5em
+        top 22.5em
+      
+      .n-382
+        top 8.2em
+        left 19.1em
+        color #A1C139
+          
+      .n-500
+        top 10.85em
+        left 19.1em
+        color #74C23B
+          
+      .n-618
+        left 19.1em
+        top 13.6em
+        color #79C598        
+      
+      .n-786
+        left 19.1em
+        top 17.6em
+        color #659CCC
+        
+      .n-886
+        left 19.1em
+        top 19.9em
+        color #d77cb9          
+      
+      .n-1272  
+        left 19.1em
+        top 28.85em
+        color #c72838
+        
+      .n-1414  
+        left 19.1em
+        top 32.2em
+        color #9528cc
+        
+      .n-1618  
+        left 19.1em
+        top 36.9em        
+        color #2828cc    
+        
+        
      
   .input-area
     position repeat

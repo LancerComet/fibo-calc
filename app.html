@@ -12,15 +12,23 @@
     <!-- Left Navbar. -->
     <nav class="left-nav" ms-controller="leftNavCtrl">
         <div class="author"></div>
-        <button class="section-switcher retrancement" title="斐波那契回撤" ms-click="switchPanel('fibo-retrancement')"></button>
-        <button class="section-switcher expansion" title="斐波那契扩展" ms-click="switchPanel('fibo-expansion')"></button>
+        <button class="section-switcher retrancement" title="斐波那契回撤" ms-click="switchPanel('fibo-retrancement')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 595.3 841.9" enable-background="new 0 0 595.3 841.9" width="30" height="30" style="fill: #ADB6C5">
+                <path d="M4.3 642.1H591v-32.6H4.3v32.6zm0-195.6H591v-32.6H4.3v32.6zm0-228.1V251H591v-32.6H4.3z"></path>
+            </svg>
+        </button>
+        <button class="section-switcher expansion" title="斐波那契扩展" ms-click="switchPanel('fibo-expansion')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.000001 29.999999" width="30" height="30" enable-background="new 0 0 595.3 841.9" style="fill: #ADB6C5">
+                <path d="M25 17H6.05l-.03-3.68 16.187-7.386-.414-.91L5.016 12.68 5.05 17H5v1h.057v.004l.5-.004H25v-1zm0 3H5v1h20v-1zm0 3H5v1h20v-1z"></path>
+            </svg>
+        </button>
     </nav>
 
     <!-- Main Node. -->
     <main class="main-ctnr" ms-controller="mainSectionCtrl">
 
         <!-- Fibo Retrancement Panel. | 斐波那契回调面板. -->
-        <section class="main-section retrancement" ms-visible="showPanel === 'fibo-retrancement'">
+        <section class="main-section retrancement move-in-left" ms-visible="showPanel === 'fibo-retrancement'">
 
             <div class="retrancement-ctnr" ms-controller="retrancementCtrl">
                 
@@ -63,18 +71,48 @@
         </section>
 
         <!-- Fibo Expansion Panel. | 斐波那契扩展面板. -->
-        <section class="main-section expansion" ms-visible="showPanel === 'fibo-expansion'">
-
-            <!-- Action bar. -->
-            <nav class="action-bar"></nav>
+        <section class="main-section expansion move-in-left" ms-visible="showPanel === 'fibo-expansion'">
             
-            <h2>斐波那契扩展</h2>
+            <div class="extension-ctnr" ms-controller="extensionCtrl">
+                
+                <h2>斐波那契扩展</h2>
+            
+                <!-- Action bar. -->
+                <nav class="action-bar">
+                    <button class="panel-switcher" ms-click="switchPanel('uptrend')" ms-class="active: panelNow === 'uptrend'">上升趋势</button>
+                    <button class="panel-switcher" ms-click="switchPanel('downtrend')" ms-class="active: panelNow === 'downtrend'">下降趋势</button>
+                </nav>
+                
+                <!-- Panel:  -->
+                <div class="panel-ctnr">
+                    
+                    <h4 ms-text="panelNow === 'uptrend' ? '上升趋势' : '下降趋势'"></h4>
 
-            <!-- Panel:  -->
-            <div class="panel-ctnr expansion-uptrend"></div>
+                    <!-- Chart Image. -->
+                    <div class="chart-ctnr extension" ms-class="uptrend: panelNow === 'uptrend'" ms-class-1="downtrend: panelNow === 'downtrend'">
+                        <div class="chart-image transition-dot-4">
+                            <p class="n-x" ms-text="'x: ' + inputData.x"></p>
+                            <p class="n-a" ms-text="'a: ' + inputData.a"></p>
+                            <p class="n-382" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.382).toFixed(5)"></p>
+                            <p class="n-500" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.5).toFixed(5)"></p>
+                            <p class="n-618" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.618).toFixed(5)"></p>
+                            <p class="n-786" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.786).toFixed(5)"></p>
+                            <p class="n-886" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 0.886).toFixed(5)"></p>
+                            <p class="n-1272" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 1.272).toFixed(5)"></p>
+                            <p class="n-1414" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 1.414).toFixed(5)"></p>
+                            <p class="n-1618" ms-text="(parseFloat(inputData.x) + (parseFloat(inputData.a) - parseFloat(inputData.x)) * 1.618).toFixed(5)"></p>                                                                                    
+                        </div>
+                        
+                        <div class="input-area">
+                            <p><label>X 点价格：</label><input class="x-input transition-dot-4" type="text" ms-duplex="inputData.x"></p>
+                            <p><label>A 点价格：</label><input class="a-input transition-dot-4" type="text" ms-duplex="inputData.a"></p>
+                        </div>
+                        
+                    </div>
 
-            <!-- Panel: Downtrend. -->
-            <div class="panel-ctnr expansion-downtrend"></div>
+                </div>
+                
+            </div>
 
         </section>
 

@@ -6,7 +6,7 @@
 (function fiboCalc(window, undefined) {
     
     // Definition: LeftNav Controller | 左侧导航控制器.    
-    (function leftNavCtrl(params) {
+    (function leftNavCtrl () {
         
         // Definition: LeftNav Controller.
         var leftNavCtrl = avalon.define({
@@ -21,7 +21,7 @@
 
 
     // Definition: Main Section Controller | 主章节控制器.
-    (function mainSectionCtrl(params) {
+    (function mainSectionCtrl () {
         // Definition: Main Section Controller.
         var mainSectionCtrl = avalon.define({
             $id: "mainSectionCtrl",
@@ -37,7 +37,7 @@
     
     
     // Definition: Fibo Retrancement Controller.
-    (function fiboRetrancement(params) {
+    (function fiboRetrancement () {
         var retrancementCtrl = avalon.define({
             $id: "retrancementCtrl",
             inputData: {
@@ -56,6 +56,30 @@
                                 
             }
         });
+    })();
+    
+    
+    // Definition: Fibo Extension Controller.
+    (function () {
+        
+        var extensionCtrl = avalon.define({
+            $id: "extensionCtrl",
+            inputData: {
+                x: 1000,
+                a: 1020
+            },
+            panelNow: "uptrend",
+            switchPanel: function (value) {
+                if (extensionCtrl.panelNow === value) return;
+                extensionCtrl.panelNow = value;
+                
+                // Swap x and a.
+                var temp = extensionCtrl.inputData.x;
+                extensionCtrl.inputData.x = extensionCtrl.inputData.a;
+                extensionCtrl.inputData.a = temp;
+            }
+        });
+        
     })();
 
 
